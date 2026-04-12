@@ -1,32 +1,55 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mini Market</title>
-
-<link rel="stylesheet" href="style.css">
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Экономика Бот</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <div class="container">
 
-    <h2>🛍 Mini Market</h2>
+    <!-- Экран приветствия + авторизации -->
+    <div id="auth-screen" class="screen active">
+        <div class="header">
+            <div class="avatar" id="user-avatar">👤</div>
+            <h1 id="welcome-text">Добро пожаловать!</h1>
+            <p class="subtitle">Войдите или зарегистрируйтесь, чтобы начать зарабатывать</p>
+        </div>
 
-    <div id="auth">
-        <input id="username" placeholder="Имя">
-        <button onclick="register()">Регистрация</button>
-        <button onclick="login()">Войти</button>
+        <div class="form">
+            <input type="text" id="custom-name" placeholder="Ваше имя (опционально)" maxlength="20">
+            
+            <button onclick="handleRegister()" class="btn primary-btn">
+                🔑 Зарегистрироваться
+            </button>
+            
+            <button onclick="handleLogin()" class="btn secondary-btn">
+                Войти в существующий аккаунт
+            </button>
+        </div>
+
+        <div class="footer">
+            <p>Данные берутся из вашего Telegram-аккаунта</p>
+        </div>
     </div>
 
-    <div id="app" style="display:none;">
-        <h3 id="welcome"></h3>
+    <!-- Главный экран (появится после успешной регистрации/входа) -->
+    <div id="main-screen" class="screen">
+        <div class="header">
+            <h2 id="main-welcome">Добро пожаловать обратно!</h2>
+        </div>
+        
+        <div class="balance-card">
+            <p>Ваш баланс</p>
+            <h3 id="balance">0 💰</h3>
+        </div>
 
-        <div class="card">
-            <p>Наушники — 5000₸</p>
-            <button onclick="buy('Наушники')">Купить</button>
+        <div class="actions">
+            <button onclick="goToShop()" class="btn">🛒 Магазин</button>
+            <button onclick="goToProfile()" class="btn">👤 Профиль</button>
         </div>
     </div>
 
