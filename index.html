@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Market</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🛍 Mini Market</h2>
+
+    <div id="auth">
+        <input id="username" placeholder="Имя">
+        <button onclick="register()">Регистрация</button>
+        <button onclick="login()">Войти</button>
+    </div>
+
+    <div id="app" style="display:none;">
+        <h3 id="welcome"></h3>
+
+        <div class="card">
+            <p>Наушники — 5000₸</p>
+            <button onclick="buy('Наушники')">Купить</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
